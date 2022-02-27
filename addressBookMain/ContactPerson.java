@@ -11,7 +11,7 @@ public class ContactPerson {
 	private int zip;
 	private String phoneNumber;
 	private String email;
-	
+
 	public ContactPerson(String firstName, String lastName, String address, String city, String state, int zip,      //Parameterized constructor
 			String phoneNumber, String email) {
 		super();
@@ -26,9 +26,10 @@ public class ContactPerson {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() {                                                                                        // toStrings for display output
 		return "ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
 				+ city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email
 				+ "]";
 	}
+
 }
