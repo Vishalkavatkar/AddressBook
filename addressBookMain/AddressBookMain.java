@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class AddressBookMain {
 	Scanner sc = new Scanner(System.in);
 	List<ContactPerson> contact = new ArrayList<ContactPerson>();
