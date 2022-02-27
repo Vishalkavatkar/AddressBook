@@ -2,20 +2,44 @@ package addressBookMain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AddressBookMain {
-	public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	List<ContactPerson> contact = new ArrayList<ContactPerson>();
+	public void addContact() {
 
-		System.out.println("---------Welcome to Address Book---------");
+		Scanner scan = new Scanner(System.in);
+		System.out.print(" Please enter the first name: ");
+		String firstName = scan.next();
 
-		List<ContactPerson> contacts = new ArrayList<>();                                   // creating a ArrayList for storing the contacts
+		System.out.print(" Please enter the last name: ");
+		String lastName = scan.next();
 
-		ContactPerson newContact = new ContactPerson("Vishal", "Kavatkar", "Kolamb", "Malvan", "Maharashtra", 416606,              
-				"9420196236", "vkavatkar11@gmail.com");                                                                       // created a object
+		System.out.print(" Please enter the address: ");
+		String address = scan.next();
 
-		contacts.add(newContact);                                                                                           //adding it to arrayList
+		System.out.print(" Please enter the city: ");
+		String city = scan.next();
 
-		System.out.println(contacts);
+		System.out.print(" Please enter the state: ");
+		String state = scan.next();
+
+		System.out.print(" Please enter the zip: ");
+		int zip = scan.nextInt();
+
+		System.out.print(" Please enter the phone number: ");
+		Long phoneNumber = scan.nextLong();
+
+		System.out.print(" Please enter the email: ");
+		String email = scan.next();
+ 
+		//taking the input from console and then adding it to the ArrayList contacts
+		ContactPerson newContact = new ContactPerson(firstName, lastName, address, city, state, zip, phoneNumber, email);   //Parameterized constructor
+		contact.add(newContact);
+		
+		System.out.println(contact);
+
 	}
 
 }
