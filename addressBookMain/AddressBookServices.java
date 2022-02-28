@@ -143,7 +143,11 @@ public void edit() {
 	System.out.println("Contacts updated" + contact);
 
 }
-	
+public void delete() {
+	ContactPerson contact = findContact();
+	contacts.remove(contact);
+	System.out.println(contacts);
+}
 public void displayContact() {                                                       
 	System.out.println(contacts);
 }

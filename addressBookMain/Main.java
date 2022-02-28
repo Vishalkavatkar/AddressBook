@@ -5,6 +5,7 @@ public class Main {
 		AddressBookServices ab = new AddressBookServices();
 		ab.addContact();
 		ab.edit();
+		ab.delete();
 		ab.displayContact();
 	}
 
