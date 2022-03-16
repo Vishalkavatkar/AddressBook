@@ -92,8 +92,10 @@ public class MultipleAddressBook {
 		System.out.println("Enter Name of Address Book you want to delete: ");
 		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
-		if (addressBookMap.containsKey(bookName)) {                                       //we use containsKey to check if addressBook present 
-			addressBookMap.remove(bookName);                                                 // and use remove fun to remove the book
+		//we use containsKey to check if addressBook present
+		// and use remove fun to remove the book
+		if (addressBookMap.containsKey(bookName)) {                                        
+			addressBookMap.remove(bookName);                                                 
 		} else {
 			System.out.println("AddressBook doesn't exist, Please enter correct name.");
 			deleteAddressBook();
@@ -147,14 +149,15 @@ public class MultipleAddressBook {
 	 *Then we are saving contacts to the list.
 	 *Then we are using the streams filter to get the contact matching the city and then printing it.
 	 */
-      public void searchByCity() {
+	
+	public void searchByCity() {
 		
 		System.out.println("Enter the name of the City to get the persons : ");
 		String cityName = scanner.next();
 		for (String i : addressBookMap.keySet()) {
 		List<ContactPerson>	arr = addressBookMap.get(i).contacts;
 		arr.stream().filter(person -> person.getCity().equals(cityName)).forEach(person -> System.out.println(person.getFirstName()));
-      }		
+		}		
     }
 
       /**
@@ -163,13 +166,29 @@ public class MultipleAddressBook {
   	 * Then we are saving contacts to the list.
   	 * Then we are using the streams filter to get the contact matching the state and then printing it.
   	 */
-public void searchByState() {
+	public void searchByState() {
+		
+		System.out.println("Enter the name of the State to the get persons : ");
+		String stateName = scanner.next();
+		for (String i : addressBookMap.keySet()) {
+		List<ContactPerson>	arr = addressBookMap.get(i).contacts;
+		arr.stream().filter(person -> person.getState().equals(stateName)).forEach(person -> System.out.println(person.getFirstName()));
+	  }		
+	}
 	
-	System.out.println("Enter the name of the State to the get persons : ");
-	String stateName = scanner.next();
-	for (String i : addressBookMap.keySet()) {
-	List<ContactPerson>	arr = addressBookMap.get(i).contacts;
-	arr.stream().filter(person -> person.getState().equals(stateName)).forEach(person -> System.out.println(person.getFirstName()));
-  }		
-}
-}
+	/**
+	 * We are displaying the people by region
+	 * @param addressBookMap -  In this we are passing the hashmap
+	 */
+	public void displayPeopleByRegion(HashMap<String, ArrayList<ContactPerson>> addressBookMap) {
+		List<ContactPerson> contacts;
+		for (String name : addressBookMap.keySet()) {
+			System.out.println("People residing in: " + name);
+			contacts = addressBookMap.get(name);
+			for (ContactPerson contact : contacts) {
+				System.out.println(contact);
+			}
+		}
+
+	}
+} 
