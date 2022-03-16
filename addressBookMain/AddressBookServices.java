@@ -98,6 +98,7 @@ public class AddressBookServices {
 		person.setCity(city);
 		person.setState(state);
 		person.setZip(zip);
+		
 		contacts.add(person);
 		
 	}
