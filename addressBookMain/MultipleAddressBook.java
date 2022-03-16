@@ -3,99 +3,135 @@ package addressBookMain;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+/**
+ * This class have the implementation for the multiple address book.
+ * We have created the methods for the address book manipulations.
+ * We have used a HashMap to store multiple addressBook
+ * The method addAddressBook will add the address book key to the Map.
+ * The method addContact will add the contact to the addressBook
+ * The method editContact will edit the contacts in the address book
+ * Method to delete the addressBook
+ * The method deleteContactInBook to delete the specific contact in the book
+ * This method will print the AddressBook i.e keys in the Map
+ *
+ */
 public class MultipleAddressBook {
-	// use of hashMap to save the addressBook
+	/**
+	 * We have created a HashMap and taken the key String as addressBook name and the value as AddressBookServices for contacts.
+	 */
 	Map<String, AddressBookServices> addressBookMap = new HashMap<>();              
 
-	// to add address book
+	/**
+	 * The method addAddressBook will add the address book key to the Map.
+	 * We are taking a addressBook name from the console and using the .containsKep method to check if the book is already present
+	 * Else we will use the put method to add the key and value.
+	 */
 	public void addAddressBook() {                                                  
 		System.out.println("Enter Name of new Address Book: ");
 		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
-		
-		//we use containsKey to check if the book name exists
-		if (addressBookMap.containsKey(bookName)) {                                
+		if (addressBookMap.containsKey(bookName)) {                               
 			System.out.println("Address book with this name exists, Enter new name.");
 			addAddressBook();
 		} else {
 			AddressBookServices addressBook = new AddressBookServices();
-			addressBookMap.put(bookName, addressBook);  
-			
-			//adding address book and contacts to HashMap
+			addressBookMap.put(bookName, addressBook);                              //adding address book and contacts to HashMap
 			System.out.println("Address Book " + bookName + " successfully added!!");
 		}
 	}
 
-	// to add contact in Address book
+	/**
+	 * The method addContact will add the contact to the addressBook
+	 * First we will ask the AddressBook name to add the contact to.
+	 * Then we will get the key from the HashMap
+	 * We are then just calling the add contact method and adding the contact to our ArrayList.
+	 */
 	public void addContact() {                                                     
 		System.out.println("Enter the name of Address book to add the contact.");
 		Scanner scanner = new Scanner(System.in);
 		String newContact = scanner.nextLine();
-		
-		// to check if the addressbook is present
-		AddressBookServices addressBook = addressBookMap.get(newContact);           
+		AddressBookServices addressBook = addressBookMap.get(newContact); 
 		if (addressBook == null) {
 			System.out.println("No book found");
 
 		} else {
-			// if present then add it to hashMap
 			addressBookMap.get(newContact).addContact();                         
 		}
 	}
 
+	/**
+	 * The method editContact will edit the contacts in the address book
+	 * First we will ask the AddressBook name to edit the contact to.
+	 * Then we will get the key from the HashMap
+	 * We are then just calling the edit contact method
+	 */
 	public void editContactInBook() {
 		System.out.println("Enter Name of Address Book you want to edit: ");
 		Scanner scanner = new Scanner(System.in);
 		String editBookName = scanner.next();
 		if (addressBookMap.containsKey(editBookName)) {
-			
-			// calling the edit contact method to edit contacts
-			addressBookMap.get(editBookName).editContact();                               
+			addressBookMap.get(editBookName).editContact();                               // calling the edit contact method to edit contacts
 		} else {
 			System.out.println("AddressBook doesn't exist, Please enter correct name.");
 			editContactInBook();
 		}
 	}
 
+	/**
+	 * Method to delete the addressBook
+	 * In this we will delete the specific key and its contacts.
+	 * We are using the remove method to delete the key & value form the map 
+	 */
 	public void deleteAddressBook() {
 		System.out.println("Enter Name of Address Book you want to delete: ");
 		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
-		
-		//we use containsKey to check if addressBook present 
-		// and use remove fun to remove the book
-		addressBookMap.remove(bookName);                                                 
-		if (addressBookMap.containsKey(bookName)) {                                       
+		if (addressBookMap.containsKey(bookName)) {                                       //we use containsKey to check if addressBook present 
+			addressBookMap.remove(bookName);                                                 // and use remove fun to remove the book
 		} else {
 			System.out.println("AddressBook doesn't exist, Please enter correct name.");
 			deleteAddressBook();
 		}
 	}
 
+	/**
+	 * The method deleteContactInBook to delete the specific contact in the book
+	 * This method will only delete the value and not the key.
+	 * We will check if the key is present and then we will call the deleteContact method and delete the specific contact.
+	 * 
+	 */
 	public void deleteContactInBook() {
 		System.out.println("Enter Name of Address Book you want to delete the contacts in it: ");
 		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
 		if (addressBookMap.containsKey(bookName)) {
-			addressBookMap.get(bookName).deleteContact();                                            // we call the deleteContact function to delete the contact
+			addressBookMap.get(bookName).deleteContact();                                            
 		} else {
 			System.out.println("AddressBook doesn't exist, Please enter correct name.");
 			deleteContactInBook();
 		}
 	}
 
+	/**
+	 * This method will print the AddressBook i.e keys in the Map
+	 * We are using the advanced for loop to print the key.
+	 * We are sung the .keySet to get all the keys from the Map.
+	 */
 	public void printBook() {
 		System.out.println("These are AddressBooks in program.");
-		for (String i : addressBookMap.keySet()) {                                     // we use keySet to get all the keys and display it
+		for (String i : addressBookMap.keySet()) {                                     
 			System.out.println(i);
 		}
 	}
 
+	/**
+	 * We are using this method to print the contacts in the AddressBook.
+	 * We have used the get(key) metod to print the contacts.
+	 */
 	public void printContactsInBook() {
 		for (String i : addressBookMap.keySet()) {
 			System.out.println(i);
-			System.out.println(addressBookMap.get(i).contacts);                     //we print the values of the key
+			System.out.println(addressBookMap.get(i).contacts);                     
 		}
 		System.out.println(" ");
 	}

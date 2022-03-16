@@ -1,29 +1,72 @@
 package addressBookMain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
-import addressBookMain.ContactPerson;	
+import addressBookMain.ContactPerson;
 
+/**
+ * In this class we are creating methods for the contact manipulation.
+ * We have created the addContact method to add the contacts to the list.
+ * The editContact method will edit the contact in the list.
+ * Method display to list the contacts.
+ * Method delete to delete a specific contact.
+ *
+ */
 public class AddressBookServices {
 	Scanner sc = new Scanner(System.in);
+	String name;
 	
+	/**
+	 * We have created a list of ContactPerson type and also a HashMap for multiple address book.
+	 */
 	List<ContactPerson> contacts = new ArrayList<ContactPerson>();
+	Map<String, AddressBookServices> addressBookMap = new HashMap<>(); 
+	ContactPerson person = new ContactPerson();
 
-	//taking input from console to add user
+	/**
+	 * In this method we are checking if the contacts added is duplicate or not with reference to the first name.
+	 * We are taking first name from the user.
+	 * Then we are checking in the ArrayList if the name matches the present firstname.
+	 * If present then it will give error.
+	 * Else it will call the addPerson Method
+	 */
+	public void duplicateCheck() {  
+		System.out.print(" Please enter the first name: ");
+		name = sc.next();
+		for(ContactPerson i : contacts) {
+		   if(i.getFirstName().equals(name)) {
+			   System.out.println(" Given name already exists");
+		   } return;
+        }  addPerson();
+	}
+	
+	/**
+	 * We have created this class to take number of contacts from the user.
+	 * We have used the For loop and called the check method.
+	 */
 	public void addContact() {                                                            
 		System.out.println("Enter the number of contacts you want to enter");
         int number = sc.nextInt();
         for (int i = 0; i < number; i++) {
             System.out.println("Enter the contact details of person ");
-            addPerson();
+            duplicateCheck();
         }
     }
+	
+	/**
+	 * This method is to take the input from console and set the values of the contact.
+	 * We have just take the input from console and saved it in a variable.
+	 * Then we are using the setters to set the contact values.
+	 * Then we are calling the add method to add the data to ArrayList.
+	 */
     public void addPerson() {
+    	ContactPerson person = new ContactPerson();
     	Scanner scan = new Scanner(System.in);
-		System.out.print(" Please enter the first name: ");
-		String firstName = scan.next();
-		
+		String firstName = name;
+
 		System.out.print(" Please enter the last name: ");
 		String lastName = scan.next();
 		
@@ -45,15 +88,29 @@ public class AddressBookServices {
 		System.out.print(" Please enter the email: ");
 		String email = scan.next();
 		
-		ContactPerson newContact = new ContactPerson(firstName, lastName, address, city, state, zip, phoneNumber, email);
-		contacts.add(newContact);
-
+		person.setFirstName(firstName);
+		person.setLastName(lastName);
+		person.setPhoneNumber(phoneNumber);
+		person.setEmail(email);
+		person.setCity(city);
+		person.setState(state);
+		person.setZip(zip);
+		contacts.add(person);
+		
 	}
-    //to find the contacts
+
+    /**
+     *  We have created the findContact method to find a specific contact in ArrayList for manipulation.
+     *  We are taking the firstname from the console. 
+     *  Then will advanced for loop we are iterating through the ArrayList 
+     *  If the name matches then we will increment the duplicate counter.
+     *  We have created the duplicate counter to check if same name exists twice.
+     *  Else it will return the contact.
+     * @return - It will return the contact to take action on.
+     */
 	public ContactPerson findContact() {                                         
 		System.out.println("\n Enter the first name of the contact to edit: ");
 		String name = sc.next();
-		//will increment the duplicate if found multiple contacts with same name
 		int duplicate = 0;                                                   
 		ContactPerson temp = null;
 		for (ContactPerson contact : contacts) {
@@ -81,6 +138,12 @@ public class AddressBookServices {
 		return temp;
 	} 
 
+	/**
+	 * The editContact method will edit the contact in the list.
+	 * We are using the find contact method to get the contact from the list.
+	 * Then we are using the switch to exit a specific variable.
+	 * We are using the setters to edit the values.
+	 */
 	public void editContact() {
 
 		ContactPerson contact = findContact();
@@ -157,18 +220,25 @@ public class AddressBookServices {
 
 	}
 	
+	/**
+	 * Method display to list the contacts.
+	 * This method will display the contacts of the list
+	 */
 	public void displayContact() {                                                       
 			System.out.println(contacts);
 	}
 	
-	//to delete contact
-	public void deleteContact() {                                                                       
+	/**
+	 * Method delete to delete a specific contact.
+	 * We will call the find method to get the contact.
+	 * Then we will call the remove method to delete the contact from the list.
+	 */
+	public void deleteContact() {                                                                      
 		ContactPerson contact = findContact();
 		if (contact == null) {
 			System.out.println("No contact found with the given name");
 			return;
 		}
-		// remove method to delete the contact
 		contacts.remove(contact);                                                                        
 		System.out.println("The contact has been deleted from the Address Book");
 	}
