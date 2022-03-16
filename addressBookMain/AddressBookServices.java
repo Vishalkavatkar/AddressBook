@@ -3,15 +3,15 @@ package addressBookMain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import addressBookMain.ContactPerson;
+import addressBookMain.ContactPerson;	
 
 public class AddressBookServices {
 	Scanner sc = new Scanner(System.in);
 	
 	List<ContactPerson> contacts = new ArrayList<ContactPerson>();
 
-	
-	public void addContact() {                                                            //taking input from console to add user
+	//taking input from console to add user
+	public void addContact() {                                                            
 		System.out.println("Enter the number of contacts you want to enter");
         int number = sc.nextInt();
         for (int i = 0; i < number; i++) {
@@ -49,10 +49,12 @@ public class AddressBookServices {
 		contacts.add(newContact);
 
 	}
-	public ContactPerson findContact() {                                         //to find the contacts
+    //to find the contacts
+	public ContactPerson findContact() {                                         
 		System.out.println("\n Enter the first name of the contact to edit: ");
 		String name = sc.next();
-		int duplicate = 0;                                                   //will increment the duplicate if found multiple contacts with same name
+		//will increment the duplicate if found multiple contacts with same name
+		int duplicate = 0;                                                   
 		ContactPerson temp = null;
 		for (ContactPerson contact : contacts) {
 			if (contact.getFirstName().equals(name)) {
@@ -159,13 +161,15 @@ public class AddressBookServices {
 			System.out.println(contacts);
 	}
 	
-	public void deleteContact() {                                                                       //to delete contact
+	//to delete contact
+	public void deleteContact() {                                                                       
 		ContactPerson contact = findContact();
 		if (contact == null) {
 			System.out.println("No contact found with the given name");
 			return;
 		}
-		contacts.remove(contact);                                                                        // remove method to delete the contact
+		// remove method to delete the contact
+		contacts.remove(contact);                                                                        
 		System.out.println("The contact has been deleted from the Address Book");
 	}
 

@@ -123,7 +123,7 @@ public class ContactPerson {
 
 
 	@Override
-	public String toString() {                                                                                        // toStrings for display output
+	public String toString() {    // toStrings for display output
 		return "ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
 				+ city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email
 				+ "]";
