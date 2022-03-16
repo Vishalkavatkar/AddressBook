@@ -39,8 +39,10 @@ public class AddressBookServices {
 		for(ContactPerson i : contacts) {
 		   if(i.getFirstName().equals(name)) {
 			   System.out.println(" Given name already exists");
-		   } return;
-        }  addPerson();
+		   }
+		   return;
+        }  
+		addPerson();
 	}
 	
 	/**
@@ -152,7 +154,8 @@ public class AddressBookServices {
 				+ "\n 3.Edit address" + "\n 4.Edit city" + "\n 5.Edit state" + "\n 6.Edit zipcode"
 				+ "\n 7.Edit phone number"  + "\n 8.Edit email");
 
-		int choice = sc.nextInt();                                 //with the help of setters setting the new details
+		//with the help of setters setting the new details
+		int choice = sc.nextInt();                                 
 		switch (choice) {
 		case 1:
 			System.out.println("Enter new first name");
