@@ -3,7 +3,6 @@ package addressBookMain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import addressBookMain.ContactPerson;
 
 /**
  * This is the main class and we are calling the main method there. We are

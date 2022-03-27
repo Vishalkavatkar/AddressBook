@@ -12,7 +12,6 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.Iterator;
 
-import addressBookMain.ContactPerson;
 
 /**
  * We have created this class to do the manipulations on the address Book.
