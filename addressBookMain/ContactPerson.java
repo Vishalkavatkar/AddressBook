@@ -1,9 +1,8 @@
 package addressBookMain;
 
 /**
- * In this class we are creating the contact and declaring the variables.
- * We are making the variables private and accessing it through getters and setters.
- *
+ * In this class we are creating the contact and declaring the variables. We are
+ * making the variables private and accessing it through getters and setters.
  */
 public class ContactPerson {
 	private String firstName;
@@ -11,7 +10,7 @@ public class ContactPerson {
 	private String address;
 	private String city;
 	private String state;
-	private int zip;
+	private long zip;
 	private long phoneNumber;
 	private String email;
 
@@ -58,11 +57,11 @@ public class ContactPerson {
 		this.state = state;
 	}
 
-	public int getZip() {
+	public long getZip() {
 		return zip;
 	}
 
-	public void setZip(int zip) {
+	public void setZip(long zip) {
 		this.zip = zip;
 	}
 
@@ -81,14 +80,15 @@ public class ContactPerson {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-/**
- * toString for the display pattern
- */
+
+	/**
+	 * toString for the display pattern
+	 */
 	@Override
-	public String toString() {                                  
-		return " \n ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
-				+ city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email
-				+ "]";
+	public String toString() { // toStrings to format the display
+		return " \n ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", city=" + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email="
+				+ email + "]";
 	}
 
 }
