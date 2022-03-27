@@ -12,7 +12,6 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.Iterator;
 
-
 /**
  * We have created this class to do the manipulations on the address Book.
  * [1] The method addAddressBook will add the address book key to the Map.
@@ -21,7 +20,6 @@ import java.util.Iterator;
  * [4]Method to search the address book by State.
  * [5] To display the contact by city or state
  * [6] Method to count the contacts in particular state or city.
- * [7] To display the directory.
  */
 public class MultipleAddressBook {
 	public AddressBookServices addressBook;
@@ -218,4 +216,4 @@ public class MultipleAddressBook {
 		}
 		System.out.println("-----------------------------------------");
 	}
-} 
+}
