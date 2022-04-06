@@ -15,6 +15,8 @@ public class Main {
 
 		System.out.println("---------- Welcome To Address Book Pr1ogram!! ----------");
 		MultipleAddressBook addressBookDirectory = new MultipleAddressBook();
+		Statements st = new Statements();
+		st.readAddressBook();
 		addressBookDirectory.addressBookMain();
 	}
 
